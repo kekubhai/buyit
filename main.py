@@ -13,6 +13,7 @@ pytesseract.pytesseract.tesseract_cmd = tesseract_cmd
 
 # Set Gemini API key
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+print("GEMINI_API_KEY:", GEMINI_API_KEY)  # Debugging line to check if the key is set
 if not GEMINI_API_KEY:
     st.error("❌ GEMINI_API_KEY not set. Please set it in your environment variables.")
     st.stop()
