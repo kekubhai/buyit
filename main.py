@@ -3,7 +3,6 @@ import os
 import tempfile
 from PIL import Image
 import pytesseract
-from google.genai import types
 from dotenv import load_dotenv
 load_dotenv()  # Add this near the top of your file
 
