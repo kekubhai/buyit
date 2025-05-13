@@ -13,7 +13,8 @@ dependencies = [
     "pillow",
     "google-generativeai",
     "python-dotenv",
-    "pytesseract"
+    "pytesseract",
+    "genai"
 ]
 
 [tool.poetry]
