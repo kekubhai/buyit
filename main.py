@@ -5,6 +5,8 @@ from PIL import Image
 import pytesseract
 from google import genai
 from google.genai import types
+from dotenv import load_dotenv
+load_dotenv()  # Add this near the top of your file
 
 # --- CONFIG ---
 # Set your Tesseract-OCR path
