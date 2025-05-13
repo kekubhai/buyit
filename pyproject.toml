@@ -14,7 +14,7 @@ dependencies = [
     "google-generativeai",
     "python-dotenv",
     "pytesseract",
-    "genai"
+    
 ]
 
 [tool.poetry]
