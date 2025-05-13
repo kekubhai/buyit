@@ -6,6 +6,10 @@ import pytesseract
 import google.generativeai as genai
 from google.generativeai import types
 from dotenv import load_dotenv
+
+# Must be the first Streamlit command
+st.set_page_config(page_title="Buy it", page_icon="🛍️", layout="centered")
+
 load_dotenv()  # Add this near the top of your file
 
 # --- CONFIG ---
@@ -23,7 +27,6 @@ if not GEMINI_API_KEY:
 # Initialize Gemini client
 client = genai.Client(api_key=GEMINI_API_KEY)
 
-st.set_page_config(page_title="Buy it", page_icon="🛍️", layout="centered")
 st.title("🛒 Should I Buy It?")
 st.markdown("Upload a product image and tell us why you want to buy it. We'll help you decide!")
 
