@@ -6,13 +6,13 @@ import pytesseract
 import google.generativeai as genai
 from google.generativeai import types
 from dotenv import load_dotenv
-
 # Must be the first Streamlit command
 st.set_page_config(page_title="Buy it", page_icon="🛍️", layout="centered")
 
-load_dotenv()  # Add this near the top of your file
+
 
 # --- CONFIG ---
+load_dotenv()  # Add this near the top of your file
 # Set your Tesseract-OCR path
 tesseract_cmd = r"C:\\Users\\anirb\\tesseract.exe"  # Update to your actual path
 pytesseract.pytesseract.tesseract_cmd = tesseract_cmd
@@ -20,12 +20,18 @@ pytesseract.pytesseract.tesseract_cmd = tesseract_cmd
 # Set Gemini API key
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 print("GEMINI_API_KEY:", GEMINI_API_KEY)  # Debugging line to check if the key is set
-if not GEMINI_API_KEY:
-    st.error("❌ GEMINI_API_KEY not set. Please set it in your environment variables.")
-    st.stop()
 
 # Initialize Gemini client
-client = genai.Client(api_key=GEMINI_API_KEY)
+import google.generativeai as genai
+
+# Configure with your API key
+genai.configure(api_key=GEMINI_API_KEY)
+
+# Use the Gemini model
+model = genai.GenerativeModel(model_name="gemini-1.5-flash") 
+# Use "gemini-1.5-flash" for the latest model
+# or "gemini-pro" or other available models
+
 
 st.title("🛒 Should I Buy It?")
 st.markdown("Upload a product image and tell us why you want to buy it. We'll help you decide!")
@@ -49,8 +55,8 @@ def get_gemini_response(extracted_text, reason):
         f"Consider practicality, usefulness, possible alternatives, and emotional reasoning. End with a final verdict."
     )
 
-    response = client.models.generate_content(
-        model="gemini-1.5-flash",  # Or 'gemini-2.0-pro', based on availability
+    response = model.generate_content(
+
         contents=[{"role": "user", "parts": [{"text": prompt}]}],
         config=types.GenerateContentConfig()
     )
