@@ -1,7 +1,20 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
 [project]
 name = "buyit"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "streamlit",
+    "pillow",
+    "google-generativeai",
+    "python-dotenv",
+    "pytesseract"
+]
+
+[tool.poetry]
+package-mode = false
