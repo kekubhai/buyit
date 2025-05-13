@@ -3,7 +3,6 @@ import os
 import tempfile
 from PIL import Image
 import pytesseract
-from google import genai
 import google.generativeai as genai
 from google.genai import types
 from dotenv import load_dotenv
